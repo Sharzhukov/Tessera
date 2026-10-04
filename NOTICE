@@ -1,0 +1,75 @@
+Tessera
+Copyright (C) 2026 Alexander Sharzhukov
+
+This program is distributed under the terms of the
+GNU General Public License v3.0 or later.
+A copy of the license is included in the LICENSE file.
+
+===============================================================================
+
+Dependencies
+------------
+
+Runtime
+~~~~~~~
+
+The application depends on the C++ standard library only.
+No third-party libraries are bundled or linked into the current version.
+
+Future versions may use the following libraries for the graphical interface:
+
+  * raylib
+    Copyright (c) 2013-present Ramon Santamaria (@raysan5) and contributors
+    Licensed under the zlib License.
+    See: https://github.com/raysan5/raylib/blob/master/LICENSE
+
+  * Dear ImGui
+    Copyright (c) 2014-present Omar Cornut and contributors
+    Licensed under the MIT License.
+    See: https://github.com/ocornut/imgui/blob/master/LICENSE.txt
+
+  * ImPlot
+    Copyright (c) 2020-present Evan Pezent and contributors
+    Licensed under the MIT License.
+    See: https://github.com/epezent/implot/blob/master/LICENSE
+
+  * rlImGui
+    Copyright (c) 2022-present Jeffery Myers and contributors
+    Licensed under the zlib License.
+    See: https://github.com/raylib-extras/rlImGui/blob/main/LICENSE
+
+Build tools (not distributed with the binary)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * CMake
+    Copyright (c) 2000-present Kitware, Inc. and contributors
+    Licensed under the BSD 3-Clause License.
+    See: https://gitlab.kitware.com/cmake/cmake/-/blob/master/Copyright.txt
+
+  * Ninja
+    Copyright (c) 2011-present Google Inc. and contributors
+    Licensed under the Apache License 2.0.
+    See: https://github.com/ninja-build/ninja/blob/master/COPYING
+
+Testing (not distributed with the binary)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * Catch2
+    Copyright (c) 2010-present Two Blue Cubes Ltd. and contributors
+    Licensed under the Boost Software License 1.0 (BSL-1.0).
+    See: https://github.com/catchorg/Catch2/blob/devel/LICENSE.txt
+
+===============================================================================
+
+All source code is original work by Alexander Sharzhukov,
+unless otherwise noted.
+
+For the full text of the GNU General Public License v3.0, see the LICENSE
+file or visit: https://www.gnu.org/licenses/gpl-3.0.txt
+
+For questions, contact:
+
+  Alexander Sharzhukov
+  Email:   admin@sharzhukov.com
+  Website: https://sharzhukov.com
+  GitHub:  https://github.com/Sharzhukov

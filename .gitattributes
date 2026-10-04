@@ -1,0 +1,92 @@
+# ============================================================
+#  Line endings
+# ============================================================
+
+# Auto-detect text files, normalize to LF on commit
+* text=auto
+
+# Source code — always LF (Unix) on all platforms
+*.cpp   text eol=lf
+*.cc    text eol=lf
+*.cxx   text eol=lf
+*.hpp   text eol=lf
+*.h     text eol=lf
+*.hh    text eol=lf
+*.hxx   text eol=lf
+*.inl   text eol=lf
+*.ipp   text eol=lf
+
+# CMake
+*.cmake         text eol=lf
+CMakeLists.txt  text eol=lf
+*.cmake.in      text eol=lf
+
+# Scripts
+*.sh    text eol=lf
+*.bash  text eol=lf
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# Documentation and configuration
+*.md    text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.toml  text eol=lf
+*.ini   text eol=lf
+
+# Windows-specific
+*.sln     text eol=crlf
+*.vcxproj text eol=crlf
+*.rc      text eol=crlf
+
+# ============================================================
+#  Binary files — never touch line endings
+# ============================================================
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.bmp   binary
+*.ico   binary
+*.icns  binary
+*.pdf   binary
+*.zip   binary
+*.tar   binary
+*.gz    binary
+*.7z    binary
+*.exe   binary
+*.dll   binary
+*.dylib binary
+*.so    binary
+*.a     binary
+*.lib   binary
+
+# ============================================================
+#  Diff settings
+# ============================================================
+
+*.md  diff=markdown
+
+# ============================================================
+#  GitHub Linguist — exclude from language statistics
+# ============================================================
+
+build/         linguist-vendored
+build-*/       linguist-vendored
+_deps/         linguist-vendored
+third_party/   linguist-vendored
+external/      linguist-vendored
+
+# ============================================================
+#  Export-ignore — not included in `git archive`
+# ============================================================
+
+.github/       export-ignore
+.gitignore     export-ignore
+.gitattributes export-ignore
+docs/          export-ignore
+tests/         export-ignore
+sandbox/       export-ignore

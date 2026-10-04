@@ -1,0 +1,140 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "TESSERA_BUILD_LIBRARY": "ON",
+        "TESSERA_BUILD_APP":     "ON",
+        "TESSERA_BUILD_SANDBOX": "ON",
+        "TESSERA_BUILD_TESTS":   "ON"
+      }
+    },
+    {
+      "name": "macos-debug",
+      "displayName": "macOS Debug (Ninja, AppleClang)",
+      "inherits": "base",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" },
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_OSX_DEPLOYMENT_TARGET": "11.0"
+      }
+    },
+    {
+      "name": "macos-release",
+      "displayName": "macOS Release (Universal)",
+      "inherits": "base",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" },
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_OSX_DEPLOYMENT_TARGET": "11.0",
+        "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64",
+        "TESSERA_BUILD_SANDBOX": "OFF",
+        "TESSERA_BUILD_TESTS":   "OFF"
+      }
+    },
+    {
+      "name": "macos-debug-asan",
+      "displayName": "macOS Debug + ASan/UBSan",
+      "inherits": "macos-debug",
+      "cacheVariables": { "TESSERA_ENABLE_SANITIZERS": "ON" }
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "Linux Debug (Ninja, GCC)",
+      "inherits": "base",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" },
+      "generator": "Ninja",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release (Ninja, GCC)",
+      "inherits": "base",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" },
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "TESSERA_BUILD_SANDBOX": "OFF",
+        "TESSERA_BUILD_TESTS":   "OFF"
+      }
+    },
+    {
+      "name": "linux-debug-strict",
+      "displayName": "Linux Debug + -Werror (CI)",
+      "inherits": "linux-debug",
+      "cacheVariables": { "TESSERA_WARNINGS_AS_ERRORS": "ON" }
+    },
+    {
+      "name": "linux-debug-asan",
+      "displayName": "Linux Debug + ASan/UBSan",
+      "inherits": "linux-debug",
+      "cacheVariables": { "TESSERA_ENABLE_SANITIZERS": "ON" }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "Windows Debug (Ninja Multi-Config, MSVC)",
+      "inherits": "base",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": { "CMAKE_CONFIGURATION_TYPES": "Debug;Release" }
+    },
+    {
+      "name": "windows-release",
+      "displayName": "Windows Release (Ninja Multi-Config, MSVC)",
+      "inherits": "base",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "TESSERA_BUILD_SANDBOX": "OFF",
+        "TESSERA_BUILD_TESTS":   "OFF"
+      }
+    }
+  ],
+
+  "buildPresets": [
+    { "name": "macos-debug",       "configurePreset": "macos-debug",       "jobs": 8 },
+    { "name": "macos-release",     "configurePreset": "macos-release",     "jobs": 8 },
+    { "name": "macos-debug-asan",  "configurePreset": "macos-debug-asan",  "jobs": 8 },
+    { "name": "linux-debug",       "configurePreset": "linux-debug",       "jobs": 8 },
+    { "name": "linux-release",     "configurePreset": "linux-release",     "jobs": 8 },
+    { "name": "linux-debug-strict","configurePreset": "linux-debug-strict","jobs": 8 },
+    { "name": "linux-debug-asan",  "configurePreset": "linux-debug-asan",  "jobs": 8 },
+    { "name": "windows-debug",     "configurePreset": "windows-debug",     "configuration": "Debug",   "jobs": 8 },
+    { "name": "windows-release",   "configurePreset": "windows-release",   "configuration": "Release", "jobs": 8 }
+  ],
+
+  "testPresets": [
+    { "name": "macos-debug",      "configurePreset": "macos-debug",      "output": { "outputOnFailure": true }, "execution": { "timeout": 30 } },
+    { "name": "macos-debug-asan", "configurePreset": "macos-debug-asan", "output": { "outputOnFailure": true }, "execution": { "timeout": 30 } },
+    { "name": "linux-debug",      "configurePreset": "linux-debug",      "output": { "outputOnFailure": true }, "execution": { "timeout": 30 } },
+    { "name": "linux-debug-strict","configurePreset": "linux-debug-strict","output": { "outputOnFailure": true }, "execution": { "timeout": 30 } },
+    { "name": "linux-debug-asan", "configurePreset": "linux-debug-asan", "output": { "outputOnFailure": true }, "execution": { "timeout": 30 } },
+    { "name": "windows-debug",    "configurePreset": "windows-debug",    "configuration": "Debug", "output": { "outputOnFailure": true }, "execution": { "timeout": 30 } }
+  ],
+
+  "workflowPresets": [
+    { "name": "ci-linux", "steps": [
+      { "type": "configure", "name": "linux-debug-strict" },
+      { "type": "build",     "name": "linux-debug-strict" },
+      { "type": "test",      "name": "linux-debug-strict" }
+    ]},
+    { "name": "ci-macos", "steps": [
+      { "type": "configure", "name": "macos-debug" },
+      { "type": "build",     "name": "macos-debug" },
+      { "type": "test",      "name": "macos-debug" }
+    ]},
+    { "name": "ci-windows", "steps": [
+      { "type": "configure", "name": "windows-debug" },
+      { "type": "build",     "name": "windows-debug" },
+      { "type": "test",      "name": "windows-debug" }
+    ]}
+  ]
+}

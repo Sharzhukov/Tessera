@@ -1,0 +1,37 @@
+# Build directories
+build/
+build-*/
+out/
+cmake-build-*/
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Compiler artifacts
+*.o
+*.obj
+*.exe
+*.dylib
+*.so
+*.a
+*.lib
+compile_commands.json
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+CTestTestfile.cmake
+
+# Sanitizer output
+*.log
+
+# Other path
+#docs/
