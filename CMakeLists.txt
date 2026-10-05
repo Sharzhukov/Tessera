@@ -98,7 +98,17 @@ if(TESSERA_BUILD_LIBRARY)
         set(TESSERA_CORE_SOURCES "${CMAKE_CURRENT_BINARY_DIR}/_placeholder.cpp")
     endif()
 
-    add_library(TesseraCore ${TESSERA_CORE_SOURCES})
+    add_library(TesseraCore ${TESSERA_CORE_SOURCES}
+        include/tessera/common/common.hpp
+        src/common/common.cpp
+        include/tessera/core/command.hpp
+        src/core/command.cpp
+        include/tessera/core/commandRegister.hpp
+        src/core/commandRegister.cpp
+        include/tessera/core/operations/matrix.hpp
+        src/core/operations/matrix.cpp
+        include/tessera/core/context.hpp
+        src/core/context.cpp)
     add_library(Tessera::Core ALIAS TesseraCore)
 
     # Windows: export all symbols for shared library builds
