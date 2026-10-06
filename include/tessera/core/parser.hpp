@@ -1,4 +1,4 @@
-//  token.hpp (Tessera)
+//  parser.hpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -17,8 +17,8 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
-#ifndef tessera_core_token_hpp
-#define tessera_core_token_hpp
+#ifndef tessera_core_parser_hpp
+#define tessera_core_parser_hpp
 
 #include <tessera/common/common.hpp>
 
