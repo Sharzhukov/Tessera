@@ -1,4 +1,4 @@
-//  common.hpp (Tessera)
+//  matrix.hpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -25,10 +25,19 @@
 namespace tessera {
     namespace core {
         namespace operations {
-            class matrix
+            class matrixArray
             {
             private:
                 /* data */
+            public:
+                matrixArray(/* args */);
+                ~matrixArray();
+            };
+
+            class matrix
+            {
+            private:
+                
             public:
                 matrix(/* args */);
                 ~matrix();

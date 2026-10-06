@@ -1,4 +1,4 @@
-//  common.hpp (Tessera)
+//  commandRegister.cpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
