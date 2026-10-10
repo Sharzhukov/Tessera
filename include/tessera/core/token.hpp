@@ -32,7 +32,7 @@ namespace tessera {
             token(/* args */);
             ~token();
 
-            void InputMathStr(std::string);
+            void InputMathStr();
         };
     }
 }

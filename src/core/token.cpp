@@ -20,8 +20,8 @@
 
 namespace tessera {
     namespace core {
-        void token::InputMathStr(std::string mathStr_) {
-            
+        void token::InputMathStr() {
+
         }
     }
 }
