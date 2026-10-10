@@ -31,11 +31,12 @@
 #include <iomanip>
 
 namespace tessera {
+    namespace components {}
     namespace command {}
     namespace core {
         namespace operations {}
     }
-    namespace comman {}
+    namespace common {}
 }
 
 #endif

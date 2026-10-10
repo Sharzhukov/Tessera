@@ -1,4 +1,4 @@
-//  token.cpp (Tessera)
+//  mathOperation.cpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -16,12 +16,4 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include <tessera/core/token.hpp>
-
-namespace tessera {
-    namespace core {
-        void token::InputMathStr(std::string mathStr_) {
-            
-        }
-    }
-}
+#include <tessera/components/mathOperation.hpp>

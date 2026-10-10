@@ -24,7 +24,16 @@
 
 namespace tessera {
     namespace core {
-        
+        class token
+        {
+        private:
+            /* data */
+        public:
+            token(/* args */);
+            ~token();
+
+            void InputMathStr(std::string);
+        };
     }
 }
 

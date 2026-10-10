@@ -112,7 +112,9 @@ if(TESSERA_BUILD_LIBRARY)
         include/tessera/core/token.hpp
         src/core/token.cpp
         include/tessera/core/parser.hpp
-        src/core/parser.cpp)
+        src/core/parser.cpp
+        include/tessera/components/mathOperation.hpp
+        src/components/mathOperation.cpp)
     add_library(Tessera::Core ALIAS TesseraCore)
 
     # Windows: export all symbols for shared library builds
