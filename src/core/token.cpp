@@ -20,8 +20,19 @@
 
 namespace tessera {
     namespace core {
-        void token::InputMathStr() {
+        token::token(/* args */) {};
+        token::~token() {};
 
+        void token::InputMathStr(std::string& mathStrToken) {
+            for(int i = 0; i < mathStrToken.size(); i++) {
+                m_memoryTokenStr.push_back(mathStrToken[i]);
+            }
+        }
+
+        void token::PrintMathToken() {
+            for(int i = 0; i < m_memoryTokenStr.size(); i++) {
+                std::cout << m_memoryTokenStr[i] << std::endl;
+            }
         }
     }
 }

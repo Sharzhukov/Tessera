@@ -17,6 +17,8 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
+#include <string>
+#include <vector>
 #ifndef tessera_core_token_hpp
 #define tessera_core_token_hpp
 
@@ -27,12 +29,13 @@ namespace tessera {
         class token
         {
         private:
-            /* data */
+            std::vector<char> m_memoryTokenStr;
         public:
             token(/* args */);
             ~token();
 
-            void InputMathStr();
+            void InputMathStr(std::string& mathStrToken);
+            void PrintMathToken();
         };
     }
 }

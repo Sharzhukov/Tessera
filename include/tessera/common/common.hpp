@@ -34,6 +34,18 @@ namespace tessera {
     namespace components {}
     namespace command {}
     namespace core {
+        enum class symbolToken : char {
+            e_plus, //~ +
+            e_minus, //~    -
+            e_multiplication, //    *
+            e_division, //~     /
+            e_bracketIn, //~    (
+            e_bracketOut, //~   )
+            e_exponentiation,
+            e_square, // square root
+            e_equals //~    =
+        };
+
         namespace operations {}
     }
     namespace common {}
