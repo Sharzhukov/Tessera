@@ -200,6 +200,17 @@ if(TESSERA_BUILD_TESTS AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeLists.
     add_subdirectory(tests)
 endif()
 
+# Создавать compile_commands.json в корне проекта при конфигурации
+if(CMAKE_EXPORT_COMPILE_COMMANDS)
+    set(SRC_FILE "${CMAKE_BINARY_DIR}/compile_commands.json")
+    set(DST_FILE "${CMAKE_SOURCE_DIR}/compile_commands.json")
+
+    add_custom_target(link_compile_commands ALL
+        COMMAND ${CMAKE_COMMAND} -E create_symlink ${SRC_FILE} ${DST_FILE}
+        COMMENT "Create link for compile_commands.json in project root"
+    )
+endif()
+
 # ============================================================
 #  Status
 # ============================================================

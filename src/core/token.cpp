@@ -33,6 +33,7 @@ namespace tessera {
             for(int i = 0; i < m_memoryTokenStr.size(); i++) {
                 std::cout << m_memoryTokenStr[i] << std::endl;
             }
+
         }
     }
 }
