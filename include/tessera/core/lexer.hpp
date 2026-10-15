@@ -1,4 +1,4 @@
-//  token.hpp (Tessera)
+//  lexer.hpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -26,17 +26,29 @@
 
 namespace tessera {
     namespace core {
-        class token
+        class Token
         {
         private:
-            std::vector<char> m_memoryTokenStr;
+            mathElement m_mathElement;
+            mathNumber m_mathNumber;
+            unsigned int positionNumber;
         public:
-            token(/* args */);
-            ~token();
-
-            void InputMathStr(std::string& mathStrToken);
-            void PrintMathToken();
+            Token(mathElement math_Element, mathNumber math_Number, unsigned int position_Number);
+            void SetMathElement(mathElement math_Element);
+            void SetMathNumber(mathNumber math_Number);
+            void SetPositionNumber(unsigned int position_Number);
+            ~Token();
         };
+
+        class PairToken
+        {
+        private:
+
+        public:
+
+        };
+
+
     }
 }
 

@@ -79,11 +79,11 @@
     },
     {
       "name": "windows-debug",
-      "displayName": "Windows Debug (Ninja Multi-Config, MSVC)",
+      "displayName": "Windows Debug (Ninja, MSVC)",
       "inherits": "base",
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
-      "generator": "Ninja Multi-Config",
-      "cacheVariables": { "CMAKE_CONFIGURATION_TYPES": "Debug;Release" }
+      "generator": "Ninja",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
     },
     {
       "name": "windows-release",

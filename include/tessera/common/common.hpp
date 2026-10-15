@@ -34,13 +34,20 @@ namespace tessera {
     namespace components {}
     namespace command {}
     namespace core {
-        enum class symbolToken : char {
+        enum class mathElement {
+            e_integer,
+            e_double,
+            e_char,
+            e_string
+        };
+
+        enum class mathNumber {
             e_plus, //~ +
             e_minus, //~    -
             e_multiplication, //    *
             e_division, //~     /
-            e_bracketIn, //~    (
-            e_bracketOut, //~   )
+            e_bracketOpen, //~    (
+            e_bracketClose, //~   )
             e_exponentiation,
             e_square, // square root
             e_equals //~    =

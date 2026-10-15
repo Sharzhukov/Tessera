@@ -109,8 +109,8 @@ if(TESSERA_BUILD_LIBRARY)
         src/core/operations/matrix.cpp
         include/tessera/core/context.hpp
         src/core/context.cpp
-        include/tessera/core/token.hpp
-        src/core/token.cpp
+        include/tessera/core/lexer.hpp
+        src/core/lexer.cpp
         include/tessera/core/parser.hpp
         src/core/parser.cpp)
     add_library(Tessera::Core ALIAS TesseraCore)
@@ -200,14 +200,16 @@ if(TESSERA_BUILD_TESTS AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeLists.
     add_subdirectory(tests)
 endif()
 
-# Создавать compile_commands.json в корне проекта при конфигурации
+# ============================================================
+#  Экспорт compile_commands.json в корень проекта
+# ============================================================
 if(CMAKE_EXPORT_COMPILE_COMMANDS)
     set(SRC_FILE "${CMAKE_BINARY_DIR}/compile_commands.json")
     set(DST_FILE "${CMAKE_SOURCE_DIR}/compile_commands.json")
 
-    add_custom_target(link_compile_commands ALL
-        COMMAND ${CMAKE_COMMAND} -E create_symlink ${SRC_FILE} ${DST_FILE}
-        COMMENT "Create link for compile_commands.json in project root"
+    add_custom_target(copy_compile_commands ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SRC_FILE} ${DST_FILE}
+        COMMENT "Copying compile_commands.json to project root"
     )
 endif()
 
