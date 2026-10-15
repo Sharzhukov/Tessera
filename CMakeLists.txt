@@ -101,12 +101,14 @@ if(TESSERA_BUILD_LIBRARY)
     add_library(TesseraCore ${TESSERA_CORE_SOURCES}
         include/tessera/common/common.hpp
         src/common/common.cpp
+        include/tessera/common/AtomData.hpp
+        src/common/AtomData.cpp
         include/tessera/core/command.hpp
         src/core/command.cpp
         include/tessera/core/commandRegister.hpp
         src/core/commandRegister.cpp
-        include/tessera/core/operations/matrix.hpp
-        src/core/operations/matrix.cpp
+        include/tessera/core/components/matrix.hpp
+        src/core/components/matrix.cpp
         include/tessera/core/context.hpp
         src/core/context.cpp
         include/tessera/core/lexer.hpp

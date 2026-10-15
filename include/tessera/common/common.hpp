@@ -17,45 +17,16 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
-#ifndef tessera_common_common_hpp
-#define tessera_common_common_hpp
-
 #include <iostream>
 #include <cmath>
 #include <utility>
 #include <algorithm>
-#include <map>
-#include <vector>
 #include <memory>
 #include <fstream>
 #include <iomanip>
 
 namespace tessera {
-    namespace components {}
-    namespace command {}
-    namespace core {
-        enum class mathElement {
-            e_integer,
-            e_double,
-            e_char,
-            e_string
-        };
-
-        enum class mathNumber {
-            e_plus, //~ +
-            e_minus, //~    -
-            e_multiplication, //    *
-            e_division, //~     /
-            e_bracketOpen, //~    (
-            e_bracketClose, //~   )
-            e_exponentiation,
-            e_square, // square root
-            e_equals //~    =
-        };
-
-        namespace operations {}
-    }
     namespace common {}
+    namespace components {}
+    namespace core {}
 }
-
-#endif

@@ -17,9 +17,6 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
-#ifndef tessera_core_command_hpp
-#define tessera_core_command_hpp
-
 #include <tessera/common/common.hpp>
 
 namespace tessera {
@@ -33,5 +30,3 @@ namespace tessera {
         };
     }
 }
-
-#endif

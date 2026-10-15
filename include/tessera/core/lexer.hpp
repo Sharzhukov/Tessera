@@ -17,39 +17,33 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
-#include <string>
+#include <array>
 #include <vector>
-#ifndef tessera_core_token_hpp
-#define tessera_core_token_hpp
-
 #include <tessera/common/common.hpp>
+#include <tessera/common/AtomData.hpp>
+
+using comAtomDataType = tessera::common::AtomDataType;
+using comAtomMark = tessera::common::AtomMark;
 
 namespace tessera {
     namespace core {
-        class Token
-        {
-        private:
-            mathElement m_mathElement;
-            mathNumber m_mathNumber;
-            unsigned int positionNumber;
-        public:
-            Token(mathElement math_Element, mathNumber math_Number, unsigned int position_Number);
-            void SetMathElement(mathElement math_Element);
-            void SetMathNumber(mathNumber math_Number);
-            void SetPositionNumber(unsigned int position_Number);
-            ~Token();
-        };
-
-        class PairToken
-        {
-        private:
-
-        public:
+        class lexer {
 
         };
 
-
+        class Atom
+        {
+        private:
+            comAtomDataType m_comAtomDataType;
+            comAtomMark m_comAtomMark;
+            unsigned int m_atomPosition;
+        public:
+            Atom(comAtomDataType& comAtomDataType, comAtomMark& comAtomMark, unsigned int& atomPosition);
+            void SetcomAtomDataType(comAtomDataType& comAtomDataType);
+            void SetcomAtomMark(comAtomMark& comAtomMark);
+            comAtomDataType GetcomAtomDataType();
+            comAtomMark GetcomAtomMark();
+            ~Atom();
+        };
     }
 }
-
-#endif

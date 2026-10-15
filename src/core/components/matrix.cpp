@@ -1,4 +1,4 @@
-//  matrix.hpp (Tessera)
+//  matrix.cpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -16,34 +16,4 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#pragma once
-#ifndef tessera_operations_matrix_hpp
-#define tessera_operations_matrix_hpp
-
-#include <tessera/common/common.hpp>
-
-namespace tessera {
-    namespace core {
-        namespace operations {
-            class matrixArray
-            {
-            private:
-                /* data */
-            public:
-                matrixArray(/* args */);
-                ~matrixArray();
-            };
-
-            class matrix
-            {
-            private:
-                
-            public:
-                matrix(/* args */);
-                ~matrix();
-            };
-        }
-    }
-}
-
-#endif
+#include <tessera/core/components/matrix.hpp>

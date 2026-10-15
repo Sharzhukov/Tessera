@@ -17,16 +17,16 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <tessera/common/common.hpp>
-#include <tessera/core/token.hpp>
+#include <tessera/core/lexer.hpp>
 
 int main() {
     std::cout << "[sandbox] Tessera playground\n";
-    tessera::core::token tk;
+    /*tessera::core::token tk;
 
     std::string strMath = "a + b5 * 3 = 23d";
     tk.InputMathStr(strMath);
     tk.PrintMathToken();
-
+    */
     std::cin.get();
     return 0;
 }
