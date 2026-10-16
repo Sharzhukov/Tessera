@@ -70,5 +70,29 @@ namespace tessera {
             e_comma,          //~ , (Argument separator for functions | Для разделения аргументов функций)
             e_absolute        //~ |x| (Absolute value / Magnitude | Модуль / Абсолютная величина)
         };
+
+        enum class AtomConstant {
+            // Mathematical Constants | Математические константы
+            e_pi,             // Archimedes' constant (π ≈ 3.14159) | Число Пи (π ≈ 3.14159)
+            e_euler,          // Euler's number (e ≈ 2.71828) | Число Эйлера (e ≈ 2.71828)
+            e_goldenRatio,    // Golden ratio (phi ≈ 1.61803) | Золотое сечение (phi ≈ 1.61803)
+            e_gamma,          // Euler-Mascheroni constant (γ ≈ 0.57721) | Постоянная Эйлера-Маскерони (γ ≈ 0.57721)
+
+            // Physical Constants | Физические константы
+            e_speedOfLight,   // Speed of light in vacuum (c) | Скорость света в вакууме (c)
+            e_planck,         // Planck constant (h) | Постоянная Планка (h)
+            e_gravitational,  // Newtonian constant of gravitation (G) | Гравитационная постоянная (G)
+            e_boltzmann,      // Boltzmann constant (k) | Постоянная Больцмана (k)
+            e_gasConstant,    // Molar gas constant (R) | Универсальная газовая постоянная (R)
+            e_avogadro,       // Avogadro constant (Na) | Число Авогадро (Na)
+
+            // Space & Gravity Essentials | Астрономические константы и Гравитация
+            e_g0,             // Standard acceleration of gravity (g) | Ускорение свободного падения (g)
+            e_earthMass,      // Mass of the Earth (M⊕) | Масса Земли (M⊕)
+
+            // System Internals | Внутренние системные типы
+            e_unknown         // Invalid or unsupported constant | Неизвестная или неподдерживаемая константа
+        };
+
     }
 }
