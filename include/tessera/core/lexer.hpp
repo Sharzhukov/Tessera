@@ -22,27 +22,27 @@
 #include <tessera/common/common.hpp>
 #include <tessera/common/AtomData.hpp>
 
-using comAtomDataType = tessera::common::AtomDataType;
-using comAtomMark = tessera::common::AtomMark;
+using ComAtomDataType = tessera::common::AtomDataType;
+using ComAtomMark = tessera::common::AtomMark;
 
 namespace tessera {
     namespace core {
         class lexer {
-
+            //TODO: Started lexer
         };
 
         class Atom
         {
         private:
-            comAtomDataType m_comAtomDataType;
-            comAtomMark m_comAtomMark;
+            ComAtomDataType m_ComAtomDataType;
+            ComAtomMark m_ComAtomMark;
             unsigned int m_atomPosition;
         public:
-            Atom(comAtomDataType& comAtomDataType, comAtomMark& comAtomMark, unsigned int& atomPosition);
-            void SetcomAtomDataType(comAtomDataType& comAtomDataType);
-            void SetcomAtomMark(comAtomMark& comAtomMark);
-            comAtomDataType GetcomAtomDataType();
-            comAtomMark GetcomAtomMark();
+            Atom(ComAtomDataType& ComAtomDataType, ComAtomMark& ComAtomMark, unsigned int& atomPosition);
+            void SetComAtomDataType(ComAtomDataType& ComAtomDataType);
+            void SetComAtomMark(ComAtomMark& ComAtomMark);
+            ComAtomDataType GetComAtomDataType();
+            ComAtomMark GetComAtomMark();
             ~Atom();
         };
     }
