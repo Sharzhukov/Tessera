@@ -16,15 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include <cstddef>
-#include <iostream>
-#include <string>
 #include <tessera/common/common.hpp>
-#include <tessera/common/AtomData.hpp>
-//#include <tessera/core/lexer.hpp>
-using std::cout;
-using std::endl;
-using std::cin;
+#include <tessera/core/lexer.hpp>
 #include <cctype>
 
 
@@ -32,22 +25,22 @@ using std::cin;
 int main() {
     std::string AppName = "Tessera visual calcs";
     for (size_t j = 0; j < 3; j++) {
-        if (j == 1) { cout << "# " << AppName << " #"; }
-        else { for (size_t i = 0; i < AppName.size() + 4; cout << "#", i++); }
-        cout << endl;
+        if (j == 1) { std::cout << "# " << AppName << " #"; }
+        else { for (size_t i = 0; i < AppName.size() + 4; std::cout << "#", i++); }
+        std::cout << std::endl;
     }
 
 
-    lexer lex;
+    tessera::core::lexer lex;
 
     // || std::isalpha(t_currentSymbol)
-    cout << "\nTessera $~ ";
+    std::cout << "\nTessera $~ ";
     std::string userString2Lexer;
-    std::getline(cin, userString2Lexer);
+    std::getline(std::cin, userString2Lexer);
     lex.SetUserDataString(userString2Lexer);
 
     bool resTest = lex.TransformDataToToken();
-    cout << "Result transform: " << resTest << endl;
+    std::cout << "Result transform: " << resTest << std::endl;
 
     lex.PrintToken();
 

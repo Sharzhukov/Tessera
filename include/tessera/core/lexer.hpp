@@ -96,7 +96,7 @@ namespace tessera {
 
                     return true;
                 } catch (const std::exception& ex) {
-                    cout << ex.what() << endl;
+                    std::cout << ex.what() << std::endl;
                     return false;
                 }
 
@@ -117,14 +117,14 @@ namespace tessera {
                     std::ignore = CheckUserDataString();
 
                     for (size_t i = 0; i < m_tokensUserData.size(); i++) {
-                        cout << "token " << i << ": " << m_tokensUserData[i] << endl;
+                        std::cout << "token " << i << ": " << m_tokensUserData[i] << std::endl;
                     }
 
-                    cout << "--------------" << endl;
-                    cout << "space: " << m_countSpace << endl;
+                    std::cout << "--------------" << std::endl;
+                    std::cout << "space: " << m_countSpace << std::endl;
 
                 } catch (const std::exception& ex) {
-                    cout << ex.what() << endl;
+                    std::cout << ex.what() << std::endl;
                 }
             }
 
