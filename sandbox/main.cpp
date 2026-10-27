@@ -16,17 +16,41 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#include <cstddef>
+#include <iostream>
+#include <string>
 #include <tessera/common/common.hpp>
-#include <tessera/core/lexer.hpp>
+#include <tessera/common/AtomData.hpp>
+//#include <tessera/core/lexer.hpp>
+using std::cout;
+using std::endl;
+using std::cin;
+#include <cctype>
+
+
 
 int main() {
-    std::cout << "[sandbox] Tessera playground\n";
-    /*tessera::core::token tk;
+    std::string AppName = "Tessera visual calcs";
+    for (size_t j = 0; j < 3; j++) {
+        if (j == 1) { cout << "# " << AppName << " #"; }
+        else { for (size_t i = 0; i < AppName.size() + 4; cout << "#", i++); }
+        cout << endl;
+    }
 
-    std::string strMath = "a + b5 * 3 = 23d";
-    tk.InputMathStr(strMath);
-    tk.PrintMathToken();
-    */
+
+    lexer lex;
+
+    // || std::isalpha(t_currentSymbol)
+    cout << "\nTessera $~ ";
+    std::string userString2Lexer;
+    std::getline(cin, userString2Lexer);
+    lex.SetUserDataString(userString2Lexer);
+
+    bool resTest = lex.TransformDataToToken();
+    cout << "Result transform: " << resTest << endl;
+
+    lex.PrintToken();
+
     std::cin.get();
     return 0;
 }
