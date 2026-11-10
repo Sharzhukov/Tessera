@@ -16,6 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#include <cstdlib>
 #include <tessera/common/common.hpp>
 #include <tessera/core/lexer.hpp>
 #include <tessera/core/parser.hpp>
@@ -24,19 +25,30 @@ int main() {
     tessera::core::lexer lex;
     tessera::core::parser pars;
 
-    std::cout << "Tessera $~ ";
-    std::string userString2Lexer;
-    std::getline(std::cin, userString2Lexer);
+    std::string commandReturn = "exit";
+    while (true) {
+        std::cout << "write \"exit\" for exit program\n";
+        std::cout << "Tessera $~ ";
+        std::string userString2Lexer;
 
-    lex.SetUserDataString(userString2Lexer);
-    if (lex.TransformDataToToken()) {
-        lex.PrintToken();
+        if (userString2Lexer == commandReturn) { return 0; }
+        std::getline(std::cin, userString2Lexer);
 
-        pars.SetTokensData(lex.GetTokensUserData());
-        if (pars.TransformTokenToResult()) {
-            pars.PrintResult();
+        lex.SetUserDataString(userString2Lexer);
+        if (lex.TransformDataToToken()) {
+            lex.PrintToken();
+
+            pars.SetTokensData(lex.GetTokensUserData());
+            if (pars.TransformTokenToResult()) {
+                pars.PrintResult();
+            }
         }
+
+        std::cout << "\nTap \"enter\" for next calc";
+        std::cin.get();
+        std::system("clear");
     }
+
 
     return 0;
 }
