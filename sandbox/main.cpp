@@ -18,32 +18,25 @@
 
 #include <tessera/common/common.hpp>
 #include <tessera/core/lexer.hpp>
-#include <cctype>
-
-
+#include <tessera/core/parser.hpp>
 
 int main() {
-    std::string AppName = "Tessera visual calcs";
-    for (size_t j = 0; j < 3; j++) {
-        if (j == 1) { std::cout << "# " << AppName << " #"; }
-        else { for (size_t i = 0; i < AppName.size() + 4; std::cout << "#", i++); }
-        std::cout << std::endl;
-    }
-
-
     tessera::core::lexer lex;
+    tessera::core::parser pars;
 
-    // || std::isalpha(t_currentSymbol)
-    std::cout << "\nTessera $~ ";
+    std::cout << "Tessera $~ ";
     std::string userString2Lexer;
     std::getline(std::cin, userString2Lexer);
+
     lex.SetUserDataString(userString2Lexer);
+    if (lex.TransformDataToToken()) {
+        lex.PrintToken();
 
-    bool resTest = lex.TransformDataToToken();
-    std::cout << "Result transform: " << resTest << std::endl;
+        pars.SetTokensData(lex.GetTokensUserData());
+        if (pars.TransformTokenToResult()) {
+            pars.PrintResult();
+        }
+    }
 
-    lex.PrintToken();
-
-    std::cin.get();
     return 0;
 }

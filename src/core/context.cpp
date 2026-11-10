@@ -17,3 +17,31 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <tessera/core/context.hpp>
+
+namespace tessera {
+    namespace core {
+        context::context() : m_variables{}, m_constants{}, m_lastResult{} {
+            InitConstants();
+        }
+
+        void context::InitConstants() {
+            m_constants[ComAtomConstant::e_pi] = 3.141592653589793;
+            m_constants[ComAtomConstant::e_euler] = 2.718281828459045;
+            m_constants[ComAtomConstant::e_goldenRatio] = 1.618033988749895;
+            m_constants[ComAtomConstant::e_g0] = 9.80665;
+        }
+
+        void context::SetVariable(std::string varName, double varValue) {
+            m_variables[varName] = varValue;
+        }
+
+        double context::GetVariable(std::string varName) const {
+            auto t_it = m_variables.find(varName);
+            if (t_it != m_variables.end()) {
+                return t_it->second;
+            }
+
+            return 0.0;
+        }
+    }
+}

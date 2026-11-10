@@ -20,13 +20,21 @@
 #include <tessera/common/common.hpp>
 
 namespace tessera {
-    namespace command {
-        class command {
+    namespace core {
+        class command
+        {
         private:
-            /* data */
+            std::string m_commandName;
+            std::string m_commandDescription;
         public:
-            command(/* args */);
+            command();
+            command(std::string commandName, std::string commandDescription);
             ~command();
+
+            void SetCommandName(std::string commandName);
+            void SetCommandDescription(std::string commandDescription);
+            std::string GetCommandName() const;
+            std::string GetCommandDescription() const;
         };
     }
 }

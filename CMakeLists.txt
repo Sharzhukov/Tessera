@@ -107,14 +107,14 @@ if(TESSERA_BUILD_LIBRARY)
         src/core/command.cpp
         include/tessera/core/commandRegister.hpp
         src/core/commandRegister.cpp
-        include/tessera/core/components/matrix.hpp
-        src/core/components/matrix.cpp
         include/tessera/core/context.hpp
         src/core/context.cpp
         include/tessera/core/lexer.hpp
         src/core/lexer.cpp
         include/tessera/core/parser.hpp
-        src/core/parser.cpp)
+        src/core/parser.cpp
+        include/tessera/core/token.hpp
+        src/core/token.cpp)
     add_library(Tessera::Core ALIAS TesseraCore)
 
     # Windows: export all symbols for shared library builds

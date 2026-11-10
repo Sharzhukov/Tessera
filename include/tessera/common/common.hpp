@@ -24,6 +24,11 @@
 #include <memory>
 #include <fstream>
 #include <iomanip>
+#include <string>
+#include <vector>
+#include <map>
+#include <cctype>
+#include <stdexcept>
 
 namespace tessera {
     namespace common {}

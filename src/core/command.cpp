@@ -17,3 +17,30 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <tessera/core/command.hpp>
+
+namespace tessera {
+    namespace core {
+        command::command() : m_commandName{}, m_commandDescription{} {}
+
+        command::command(std::string commandName, std::string commandDescription)
+            : m_commandName{commandName}, m_commandDescription{commandDescription} {}
+
+        command::~command() {}
+
+        void command::SetCommandName(std::string commandName) {
+            m_commandName = commandName;
+        }
+
+        void command::SetCommandDescription(std::string commandDescription) {
+            m_commandDescription = commandDescription;
+        }
+
+        std::string command::GetCommandName() const {
+            return m_commandName;
+        }
+
+        std::string command::GetCommandDescription() const {
+            return m_commandDescription;
+        }
+    }
+}

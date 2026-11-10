@@ -18,9 +18,32 @@
 
 #pragma once
 #include <tessera/common/common.hpp>
+#include <tessera/common/AtomData.hpp>
+#include <tessera/core/lexer.hpp>
+#include <tessera/core/context.hpp>
 
 namespace tessera {
     namespace core {
+        class parser
+        {
+        private:
+            std::vector<std::string> m_tokensData;
+            double m_resultMath;
 
+            //TODO: prioriti znak and brackets
+            int GetPriority(const std::string& znak);
+            double ExecuteZnak(double a, double b, const std::string& znak);
+            void ParseTokens();
+        public:
+            parser();
+            ~parser();
+
+            void SetTokensData(const std::vector<std::string>& tokensData);
+            bool CheckTokensData();
+            bool TransformTokenToResult();
+
+            double GetResultMath() const;
+            void PrintResult();
+        };
     }
 }

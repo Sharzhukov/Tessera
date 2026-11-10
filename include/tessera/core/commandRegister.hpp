@@ -18,15 +18,20 @@
 
 #pragma once
 #include <tessera/common/common.hpp>
+#include <tessera/core/command.hpp>
 
 namespace tessera {
-    namespace command {
-        class commandRegister {
+    namespace core {
+        class commandRegister
+        {
         private:
-            /* data */
+            std::vector<command> m_commandList;
         public:
-            commandRegister(/* args */);
+            commandRegister();
             ~commandRegister();
+
+            void RegisterCommand(const command& cmd);
+            void PrintCommandList();
         };
     }
 }

@@ -19,117 +19,16 @@
 #pragma once
 #include <array>
 #include <vector>
+#include <map>
 #include <tessera/common/common.hpp>
 #include <tessera/common/AtomData.hpp>
 
 using ComAtomDataType = tessera::common::AtomDataType;
 using ComAtomMark = tessera::common::AtomMark;
+using ComAtomConstant = tessera::common::AtomConstant;
 
 namespace tessera {
     namespace core {
-        class lexer {
-        private:
-            size_t m_countSpace;
-            std::string m_inputUserDataString;
-            std::vector<std::string> m_tokensUserData;
-
-            //TODO: tokenConst enum, prioriti, 3 map, number-symbol-znak + key priority position
-            void LexerToken() {
-                size_t t_cursorLine = 0;
-                std::string t_tmpBuffer;
-
-                while (true) {
-                    unsigned char t_currentSymbol = static_cast<unsigned char>(m_inputUserDataString[t_cursorLine]);
-                    unsigned char t_nextSymbol;
-                    if (m_inputUserDataString[t_cursorLine + 1] != '\0') {
-                        t_nextSymbol = static_cast<unsigned char>(m_inputUserDataString[t_cursorLine + 1]);
-                    }
-                    else { t_nextSymbol = char(); }
-
-                    if (std::isdigit(t_currentSymbol)) {
-                        t_tmpBuffer += t_currentSymbol;
-                        if (!std::isdigit(t_nextSymbol)) {
-                            m_tokensUserData.push_back(t_tmpBuffer);
-                            t_tmpBuffer.clear();
-                        }
-                    }
-                    else if (std::isalpha(t_currentSymbol)) {
-                        t_tmpBuffer += t_currentSymbol;
-                        if (!std::isalpha(t_nextSymbol)) {
-                            m_tokensUserData.push_back(t_tmpBuffer);
-                            t_tmpBuffer.clear();
-                        }
-                    }
-                    else {
-                        if (std::isspace(t_currentSymbol)) { m_countSpace++; }
-                        if (ismath(t_currentSymbol)) {
-                            t_tmpBuffer = t_currentSymbol;
-                            m_tokensUserData.push_back(t_tmpBuffer);
-                            t_tmpBuffer.clear();
-                        }
-                    }
-
-                    t_cursorLine++;
-                    if (t_cursorLine == m_inputUserDataString.size()) { break; }
-                }
-            }
-        public:
-            lexer() : m_countSpace{}, m_inputUserDataString{}, m_tokensUserData{} {}
-
-            void SetUserDataString(std::string InputUserDataString) {
-                m_inputUserDataString = InputUserDataString;
-            }
-
-            bool CheckUserDataString() {
-                if (m_inputUserDataString.empty()) {
-                    throw std::length_error("Your user data/math line empty!");
-                }
-
-                return true;
-            }
-
-            bool TransformDataToToken() {
-                try {
-                    std::ignore = CheckUserDataString();
-
-                    LexerToken();
-
-                    return true;
-                } catch (const std::exception& ex) {
-                    std::cout << ex.what() << std::endl;
-                    return false;
-                }
-
-                return true;
-            }
-
-            bool ismath(char ch) {
-                const std::string mathsym = "+-=()*^%!.<>,";
-                if (mathsym.find(ch) != std::string::npos) {
-                    return true;
-                }
-
-                return false;
-            }
-
-            void PrintToken() {
-                try {
-                    std::ignore = CheckUserDataString();
-
-                    for (size_t i = 0; i < m_tokensUserData.size(); i++) {
-                        std::cout << "token " << i << ": " << m_tokensUserData[i] << std::endl;
-                    }
-
-                    std::cout << "--------------" << std::endl;
-                    std::cout << "space: " << m_countSpace << std::endl;
-
-                } catch (const std::exception& ex) {
-                    std::cout << ex.what() << std::endl;
-                }
-            }
-
-        };
-
 
         class Atom
         {
@@ -137,13 +36,53 @@ namespace tessera {
             ComAtomDataType m_ComAtomDataType;
             ComAtomMark m_ComAtomMark;
             unsigned int m_atomPosition;
+            std::string m_atomValue;
         public:
+            Atom();
             Atom(ComAtomDataType& ComAtomDataType, ComAtomMark& ComAtomMark, unsigned int& atomPosition);
+            Atom(ComAtomDataType ComAtomDataType, ComAtomMark ComAtomMark, unsigned int atomPosition, std::string atomValue);
+
             void SetComAtomDataType(ComAtomDataType& ComAtomDataType);
             void SetComAtomMark(ComAtomMark& ComAtomMark);
-            ComAtomDataType GetComAtomDataType();
-            ComAtomMark GetComAtomMark();
+            void SetAtomPosition(unsigned int& atomPosition);
+            void SetAtomValue(std::string& atomValue);
+
+            ComAtomDataType GetComAtomDataType() const;
+            ComAtomMark GetComAtomMark() const;
+            unsigned int GetAtomPosition() const;
+            std::string GetAtomValue() const;
+
             ~Atom();
         };
+
+        class lexer {
+        private:
+            size_t m_countSpace;
+            std::string m_inputUserDataString;
+            std::vector<std::string> m_tokensUserData;
+            std::vector<Atom> m_atomsUserData;
+
+            //TODO: tokenConst enum, prioriti, 3 map, number-symbol-znak + key priority position
+            std::map<unsigned int, std::string> m_mapNumber;
+            std::map<unsigned int, std::string> m_mapSymbol;
+            std::map<unsigned int, std::string> m_mapZnak;
+
+            void LexerToken();
+            ComAtomMark ConvertZnakToMark(char ch);
+        public:
+            lexer();
+            ~lexer();
+
+            void SetUserDataString(std::string InputUserDataString);
+            bool CheckUserDataString();
+            bool TransformDataToToken();
+
+            bool ismath(char ch);
+            void PrintToken();
+
+            std::vector<std::string> GetTokensUserData() const;
+            std::vector<Atom> GetAtomsUserData() const;
+        };
+
     }
 }

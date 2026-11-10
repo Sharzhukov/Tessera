@@ -1,4 +1,4 @@
-//  matrix.hpp (Tessera)
+//  token.cpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -16,29 +16,25 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#pragma once
-#include <tessera/common/common.hpp>
+#include <tessera/core/token.hpp>
 
 namespace tessera {
     namespace core {
-        namespace operations {
-            class matrixArray
-            {
-            private:
-                /* data */
-            public:
-                matrixArray(/* args */);
-                ~matrixArray();
-            };
+        token::token() : m_memoryAtomList{} {}
+        token::~token() {}
 
-            class matrix
-            {
-            private:
+        void token::SetAtomList(const std::vector<Atom>& atomList) {
+            m_memoryAtomList = atomList;
+        }
 
-            public:
-                matrix(/* args */);
-                ~matrix();
-            };
+        std::vector<Atom> token::GetAtomList() const {
+            return m_memoryAtomList;
+        }
+
+        void token::PrintMathToken() {
+            for (size_t i = 0; i < m_memoryAtomList.size(); i++) {
+                std::cout << "atom " << m_memoryAtomList[i].GetAtomPosition() << ": " << m_memoryAtomList[i].GetAtomValue() << std::endl;
+            }
         }
     }
 }

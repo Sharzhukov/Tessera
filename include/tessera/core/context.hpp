@@ -1,4 +1,4 @@
-//  token.hpp (Tessera)
+//  context.hpp (Tessera)
 //  Tessera — Math expression parser, evaluator and visualizer.
 //
 //  Copyright (C) 2026 Alexander Sharzhukov
@@ -18,12 +18,22 @@
 
 #pragma once
 #include <tessera/common/common.hpp>
+#include <tessera/common/AtomData.hpp>
+
+using ComAtomConstant = tessera::common::AtomConstant;
 
 namespace tessera {
     namespace core {
         struct context
         {
+            std::map<std::string, double> m_variables;
+            std::map<ComAtomConstant, double> m_constants;
+            double m_lastResult;
 
+            context();
+            void InitConstants();
+            void SetVariable(std::string varName, double varValue);
+            double GetVariable(std::string varName) const;
         };
     }
 }

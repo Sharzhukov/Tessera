@@ -17,3 +17,25 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <tessera/core/commandRegister.hpp>
+
+namespace tessera {
+    namespace core {
+        commandRegister::commandRegister() : m_commandList{} {
+            RegisterCommand(command("help", "Show all Tessera commands"));
+            RegisterCommand(command("clear", "Clear console session"));
+            RegisterCommand(command("exit", "Exit Tessera calculator"));
+        }
+
+        commandRegister::~commandRegister() {}
+
+        void commandRegister::RegisterCommand(const command& cmd) {
+            m_commandList.push_back(cmd);
+        }
+
+        void commandRegister::PrintCommandList() {
+            for (size_t i = 0; i < m_commandList.size(); i++) {
+                std::cout << m_commandList[i].GetCommandName() << " - " << m_commandList[i].GetCommandDescription() << std::endl;
+            }
+        }
+    }
+}
