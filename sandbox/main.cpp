@@ -27,12 +27,10 @@ int main() {
 
     std::string commandReturn = "exit";
     while (true) {
-        std::cout << "write \"exit\" for exit program\n";
         std::cout << "Tessera $~ ";
         std::string userString2Lexer;
-
-        if (userString2Lexer == commandReturn) { return 0; }
         std::getline(std::cin, userString2Lexer);
+        if (userString2Lexer == commandReturn) { break; }
 
         lex.SetUserDataString(userString2Lexer);
         if (lex.TransformDataToToken()) {
