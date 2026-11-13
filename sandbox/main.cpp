@@ -30,7 +30,7 @@ int main() {
         std::cout << "Tessera $~ ";
         std::string userString2Lexer;
         std::getline(std::cin, userString2Lexer);
-        if (userString2Lexer == commandReturn) { break; }
+        //if (userString2Lexer == commandReturn) { break; }
 
         lex.SetUserDataString(userString2Lexer);
         if (lex.TransformDataToToken()) {

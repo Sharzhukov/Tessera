@@ -4,6 +4,7 @@ build-*/
 out/
 cmake-build-*/
 .cache/
+.codex/
 
 # IDE
 .vscode/
